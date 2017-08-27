@@ -12,7 +12,7 @@
 . /lib/lsb/init-functions
 
 do_start () {
-    /home/pi/dust.sh
+    /home/pi/sensors/sensor_dust/read_dust.sh
 }
 
 case "$1" in
@@ -25,14 +25,14 @@ case "$1" in
     ;;
   stop)
     echo "Stoping picam p and yut"
-    kill `pgrep dust.sh`
+    kill `pgrep read_dust.sh`
     ;;
 
   ifNotPresent)
-    if [ $(/usr/bin/pgrep dust.sh) ]; then
-      echo "dust.sh is running"
+    if [ $(/usr/bin/pgrep read_dust.sh) ]; then
+      echo "read_dust.sh is running"
      else
-      echo "starting picam on ifNotPresent"
+      echo "starting read_dust on ifNotPresent"
       # 
     fi
 

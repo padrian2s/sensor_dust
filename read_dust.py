@@ -20,7 +20,7 @@ password = '***********'
 
 addr  = '/dev/ttyUSB0'
 baud  = 9600
-fname = '/home/pi/dust.dat'
+fname = '/home/a/dust.dat'
 fmode = 'ab'
 reps  = 10
 t=0
