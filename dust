@@ -1,0 +1,45 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          dust
+# Required-Start:
+# Required-Stop:
+# Default-Start:     2 3 4 5
+# Default-Stop:	     0 1 6
+# Short-Description: executed by init(8) upon entering runlevel 1 (single).
+### END INIT INFO
+
+
+. /lib/lsb/init-functions
+
+do_start () {
+    /home/pi/dust.sh
+}
+
+case "$1" in
+  start)
+    do_start
+    ;;
+  restart|reload|force-reload)
+    echo "Error: argument '$1' not supported" >&2
+    exit 3
+    ;;
+  stop)
+    echo "Stoping picam p and yut"
+    kill `pgrep dust.sh`
+    ;;
+
+  ifNotPresent)
+    if [ $(/usr/bin/pgrep dust.sh) ]; then
+      echo "dust.sh is running"
+     else
+      echo "starting picam on ifNotPresent"
+      # 
+    fi
+
+    ;;
+
+  *)
+    echo "Usage: $0 ifNotPresent|start|stop" >&2
+    exit 3
+    ;;
+esac
